@@ -21,7 +21,7 @@
 
   <!--UPDATE #crUd fasho -->
   <form id="updateForm" action="/item" method="POST">
-    <input type="text" name="name" id="updateName" placeholder="New Item Name" required>
+    <input type="hidden" name="id" id="updateId">
     <input type="text" name="name" id="updateName" placeholder="New Item Name" required>
     <input type="text" name="description" id="updateDescription" placeholder="Item Description" required>
     <button type="submit">Update Item</button>

@@ -30,6 +30,54 @@ app.set('view engine','ejs')
 
 //LOGIC GOES HERE
 
+//Routes
+
+app.get('/', (req, res)=> {
+  res.render('index')
+})
+
+app.get('/item', async(req,res) => {
+  const items = await Item.find({})
+  res.render('item',{items})
+})
+
+
+//create
+app.post('/item', async(req,res) => {
+  const newItem = new Item(req.body)
+  try{
+    await newItem.save()
+    res.redirect('/item')
+  } catch(err){
+    res.redirect('item?error=true')
+  }
+})
+
+//Update
+app.post('/item/update/:id', async(req, res) => {
+  const {id} = req.params
+  const {name, description} = req.body
+  try{
+    await Item.findbyIdAndUpdate(id, {name, description})
+    res.redirect('/item')
+  } catch(err){
+    res.redirect('item?error=true')
+  }
+})
+
+//Delete
+app.delete('/item/delete/:id', async(req, res) => {
+  const {id} = req.params
+  try{
+    await Item.findbyIdAndDelete(id, {name, description})
+    res.status(200).json({message: 'Item deleted successfully' })
+  } catch(err){
+    res.redirect('item?error=true')
+  }
+})
+
+//Start the server
+
 app.listen(PORT, () => {
   console.log(`Server running on: http://localhost:${PORT}`)
 })
