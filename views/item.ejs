@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Item</title>
-  <link rel="stylesheet" href="/public/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <header>
@@ -14,7 +14,7 @@
 
   <!--CREATE #Crud-->
   <form id="createForm" action="/item" method="POST">
-    <input type="text" name="name" placeholder="Item Name" required>
+    <input type="text" name="name" placeholder="New Item Name" required>
     <input type="text" name="description" placeholder="Item Description" required>
     <button type="submit">Create Item</button>
   </form>
@@ -22,7 +22,7 @@
   <!--UPDATE #crUd fasho -->
   <form id="updateForm" action="/item" method="POST">
     <input type="hidden" name="id" id="updateId">
-    <input type="text" name="name" id="updateName" placeholder="New Item Name" required>
+    <input type="text" name="name" id="updateName" placeholder="Item Name" required>
     <input type="text" name="description" id="updateDescription" placeholder="Item Description" required>
     <button type="submit">Update Item</button>
   </form>
@@ -32,13 +32,13 @@
     <% items.forEach((item) => { %>
       <li>
         <span><%= item.name %> : <%= item.description %></span>
-        <button onClick="editItem('<%= item._id %>','><%= item.name %>','><%= item.description %>')">Edit</button>
+        <button onClick="editItem('<%= item._id %>','<%= item.name %>','<%= item.description %>')">Edit</button>
         <button onClick="deleteItem('<%= item._id %>')">Delete</button>
       </li>
     <% }); %>
   </ul>
 
-  <script src="/public/js/script.js"></script>
+  <script src="/js/script.js"></script>
   
 </body>
 </html>

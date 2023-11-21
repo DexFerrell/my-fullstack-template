@@ -28,19 +28,19 @@ function editItem(id, name, description) {
 
 //Handle Delete Requests
 async function deleteItem(id) {
-  try{
+  try {
     const response = await fetch(`http://localhost:2224/item/delete/${id}`, {
-      method: 'DELETE'
-    })
-    if(response.ok)  {
-      location.reload()
-    }else {
-      console.log('failed too delete item')
+      method: 'DELETE',
+    });
+    if (response.ok) {
+      console.log('Item deleted successfully');
+      location.reload();
+    } else {
+      console.log('Failed to delete item');
     }
-  } catch(error) {
-    console.log('error occure', error)
+  } catch (error) {
+    console.log('An error occurred:', error);
   }
-
 }
 
 
