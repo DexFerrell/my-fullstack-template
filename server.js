@@ -54,7 +54,6 @@ app.post('/item', async(req,res) => {
   }
 })
 
-//Update
 // Update
 app.post('/item/update/:id', async (req, res) => {
   const { id } = req.params;
